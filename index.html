@@ -3,11 +3,12 @@
 <head>
 <meta charset="UTF-8">
 <title>DIABLOCK — Old School MMO Dungeon</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
-
 :root{
   --green:#0f0;
   --red:#d00;
@@ -21,13 +22,14 @@ html,body{
   margin:0;
   padding:0;
   width:100%;
-  height:100%;
+  min-height:100%;
   background:var(--bg);
   color:var(--green);
   font-family:'Press Start 2P', monospace;
   overflow-x:hidden;
 }
 
+/* CRT EFFECT */
 body::before{
   content:"";
   position:fixed;
@@ -42,38 +44,40 @@ body::before{
 
 /* ===== HERO ===== */
 .hero{
-  min-height:70vh;
+  min-height:100svh;
   display:flex;
   flex-direction:column;
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:40px 20px;
+  padding:32px 16px;
 }
 
 .logo{
-  font-size:48px;
+  font-size:clamp(28px, 8vw, 48px);
   color:var(--red);
   text-shadow:4px 4px #400;
   animation:flicker 2.5s infinite;
 }
 
 .subtitle{
-  margin-top:10px;
-  font-size:12px;
+  margin-top:12px;
+  font-size:clamp(9px, 3vw, 12px);
   color:#aaa;
+  max-width:420px;
 }
 
 .cta{
-  margin-top:20px;
-  padding:18px 40px;
+  margin-top:24px;
+  padding:18px 28px;
   border:4px solid var(--green);
   color:var(--green);
   background:#000;
   text-decoration:none;
-  font-size:14px;
+  font-size:clamp(12px, 4vw, 14px);
   transition:0.15s;
   animation:pulse 1.5s infinite;
+  display:inline-block;
 }
 
 .cta:hover{
@@ -81,6 +85,62 @@ body::before{
   color:#000;
 }
 
+/* ===== SECTIONS ===== */
+.section{
+  max-width:960px;
+  margin:0 auto;
+  padding:48px 16px;
+}
+
+.section h2{
+  color:var(--yellow);
+  margin-bottom:24px;
+  font-size:clamp(14px, 4vw, 18px);
+  text-align:center;
+}
+
+.feature{
+  border-left:4px solid var(--green);
+  padding-left:16px;
+  margin-bottom:18px;
+  font-size:clamp(10px, 3vw, 12px);
+  line-height:1.8;
+}
+
+/* ===== CLASSES ===== */
+.classes{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+
+.class-card{
+  border:2px solid var(--green);
+  padding:16px;
+  background:#000;
+}
+
+.class-card h3{
+  margin-top:0;
+  color:var(--red);
+  font-size:12px;
+}
+
+.class-card p{
+  font-size:10px;
+  line-height:1.6;
+}
+
+/* ===== FOOTER ===== */
+.footer{
+  text-align:center;
+  padding:24px 16px;
+  font-size:9px;
+  color:#555;
+  border-top:1px solid #111;
+}
+
+/* ===== ANIMATIONS ===== */
 @keyframes flicker{
   0%,100%{opacity:1}
   45%{opacity:.8}
@@ -94,58 +154,19 @@ body::before{
   100%{box-shadow:0 0 0 #0f0}
 }
 
-/* ===== SECTIONS ===== */
-.section{
-  max-width:900px;
-  margin:0 auto;
-  padding:50px 20px;
-}
+/* ===== DESKTOP ===== */
+@media(min-width:768px){
+  .classes{
+    grid-template-columns:repeat(3,1fr);
+  }
 
-.section h2{
-  color:var(--yellow);
-  margin-bottom:30px;
-  font-size:18px;
-}
+  .hero{
+    min-height:80vh;
+  }
 
-.feature{
-  border-left:4px solid var(--green);
-  padding-left:20px;
-  margin-bottom:20px;
-  font-size:12px;
-  line-height:1.8;
-}
-
-/* ===== CLASS BOX ===== */
-.classes{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-}
-
-.class-card{
-  border:2px solid var(--green);
-  padding:20px;
-  background:#000;
-}
-
-.class-card h3{
-  margin-top:0;
-  color:var(--red);
-  font-size:14px;
-}
-
-.class-card p{
-  font-size:11px;
-  line-height:1.6;
-}
-
-/* ===== FOOTER ===== */
-.footer{
-  text-align:center;
-  padding:30px 20px;
-  font-size:10px;
-  color:#555;
-  border-top:1px solid #111;
+  .feature{
+    font-size:12px;
+  }
 }
 </style>
 </head>
@@ -155,11 +176,15 @@ body::before{
 <!-- HERO -->
 <section class="hero">
   <div class="logo">DIABLOCK</div>
-  <div class="subtitle">OLD SCHOOL • MMO • DUNGEON CRAWLER</div>
+  <div class="subtitle">
+    OLD SCHOOL • MMO • DUNGEON CRAWLER
+  </div>
 
-  <a class="cta" href="https://diablock.onrender.com/">▶ PLAY NOW</a>
+  <a class="cta" href="https://diablock.onrender.com/">
+    ▶ PLAY NOW
+  </a>
 
-  <p style="margin-top:30px;font-size:10px;color:#777">
+  <p style="margin-top:20px;font-size:9px;color:#777">
     No download • No lobby • Just enter and fight
   </p>
 </section>
@@ -169,14 +194,13 @@ body::before{
   <h2>WHAT IS DIABLOCK?</h2>
 
   <div class="feature">
-    Diablock é um MMO dungeon crawler inspirado na era dourada dos ARPGs.<br>
-    Sem tutoriais longos. Sem mapas cheios de ícones.<br>
-    Apenas você, o dungeon, loot e outros jogadores em tempo real.
+    MMO dungeon crawler inspirado na era dourada dos ARPGs.
+    Sem tutoriais longos. Sem mapas cheios de ícones.
   </div>
 
   <div class="feature">
-    Toda vez que você entra, o mundo já está vivo.<br>
-    Outros jogadores explorando, lutando, morrendo e evoluindo.
+    Você entra e o mundo já está vivo.
+    Jogadores explorando, lutando e evoluindo em tempo real.
   </div>
 </section>
 
@@ -184,32 +208,23 @@ body::before{
 <section class="section">
   <h2>FEATURES</h2>
 
-  <div class="feature">▶ Multiplayer instantâneo (entre e jogue)</div>
-  <div class="feature">▶ Combate em tempo real (melee, ranged, magic)</div>
-  <div class="feature">▶ Loot procedural com raridades e afixos</div>
-  <div class="feature">▶ Progressão infinita por níveis de dungeon</div>
-  <div class="feature">▶ Estética retro / CRT / old school hardcore</div>
+  <div class="feature">▶ Multiplayer instantâneo</div>
+  <div class="feature">▶ Combate em tempo real</div>
+  <div class="feature">▶ Loot procedural</div>
+  <div class="feature">▶ Progressão infinita</div>
+  <div class="feature">▶ Estética retro CRT</div>
 </section>
 
 <!-- CONTROLS -->
 <section class="section">
   <h2>CONTROLS</h2>
 
-  <div class="feature">
-    ▶ Controle (gamepad)
-  </div>
+  <div class="feature">▶ Gamepad</div>
+  <div class="feature">▶ Touchscreen (mobile)</div>
+  <div class="feature">▶ Mouse & teclado</div>
 
   <div class="feature">
-    ▶ Touchscreen (mobile e tablet)
-  </div>
-
-  <div class="feature">
-    ▶ Mouse e teclado
-  </div>
-
-  <div class="feature">
-    Jogue da forma que preferir.<br>
-    O dungeon responde igual.
+    Jogue da forma que preferir.
   </div>
 </section>
 
@@ -220,37 +235,27 @@ body::before{
   <div class="classes">
     <div class="class-card">
       <h3>WARRIOR</h3>
-      <p>
-        Corpo a corpo brutal.<br>
-        Girar, avançar, esmagar.<br>
-        Sobrevive onde outros caem.
-      </p>
+      <p>Corpo a corpo brutal. Aguenta o inferno.</p>
     </div>
 
     <div class="class-card">
       <h3>RANGER</h3>
-      <p>
-        Ataques à distância.<br>
-        Mobilidade e precisão.<br>
-        Mata antes de ser visto.
-      </p>
+      <p>Distância, precisão e mobilidade.</p>
     </div>
 
     <div class="class-card">
       <h3>WIZARD</h3>
-      <p>
-        Poder arcano puro.<br>
-        Explosões, meteoros.<br>
-        Frágil — e devastador.
-      </p>
+      <p>Frágil. Arcano. Devastador.</p>
     </div>
   </div>
 </section>
 
-<!-- END CTA -->
-<section class="hero" style="min-height:60vh">
-  <div class="logo" style="font-size:32px">ENTER THE DUNGEON</div>
-  <a class="cta" href="https://diablock.onrender.com/">▶ PLAY DIABLOCK</a>
+<!-- FINAL CTA -->
+<section class="hero">
+  <div class="logo" style="font-size:26px">ENTER THE DUNGEON</div>
+  <a class="cta" href="https://diablock.onrender.com/">
+    ▶ PLAY DIABLOCK
+  </a>
 </section>
 
 <footer class="footer">
@@ -260,147 +265,3 @@ body::before{
 
 </body>
 </html>
-
-<!-- ===== SCROLL DESCRITIVO ===== -->
-<section class="section">
-
-  <h2>THE GAME, STRAIGHT TO THE POINT</h2>
-
-  <div class="feature">
-    <strong>DIABLOCK</strong> é um dungeon crawler MMO inspirado em Diablo 1,
-    Path of Exile e ARPGs antigos.
-    <br><br>
-    Visão top-down, combate em tempo real, multiplayer persistente.
-  </div>
-
-  <div class="feature">
-    Você entra no jogo e já existe um mundo ativo.<br>
-    Jogadores explorando, mobs vivos, loot no chão.
-    <br><br>
-    Não há salas vazias.
-  </div>
-
-</section>
-
-<section class="section">
-
-  <h2>HOW YOU PLAY</h2>
-
-  <div class="feature">
-    ▶ Mouse ataca<br>
-    ▶ Teclas ativam habilidades<br>
-    ▶ Dash, bloqueio e posicionamento importam
-  </div>
-
-  <div class="feature">
-    Inimigos cercam, pressionam, recuam e avançam.<br>
-    Ficar parado = morrer.
-  </div>
-
-</section>
-
-<section class="section">
-
-  <h2>THE DUNGEON</h2>
-
-  <div class="feature">
-    Dungeons geradas proceduralmente.<br>
-    Salas conectadas por corredores.<br>
-    Chefes no final.
-  </div>
-
-  <div class="feature">
-    Quando todos os inimigos caem,<br>
-    o dungeon evolui.
-  </div>
-
-  <div class="feature">
-    Dificuldade aumenta.<br>
-    Loot melhora.<br>
-    O risco sobe.
-  </div>
-
-</section>
-
-<section class="section">
-
-  <h2>LOOT & PROGRESSION</h2>
-
-  <div class="feature">
-    ▶ Itens comuns, mágicos, raros e lendários<br>
-    ▶ Dano, defesa, velocidade, mana
-  </div>
-
-  <div class="feature">
-    Você fica mais forte porque joga melhor<br>
-    e porque encontra equipamentos melhores.
-  </div>
-
-  <div class="feature">
-    Sem pay-to-win.<br>
-    Sem atalhos.
-  </div>
-
-</section>
-
-<section class="section">
-
-  <h2>MULTIPLAYER</h2>
-
-  <div class="feature">
-    Jogadores entram e saem a qualquer momento.
-  </div>
-
-  <div class="feature">
-    Você encontra outros jogadores no mesmo dungeon.<br>
-    Cooperação acontece naturalmente.
-  </div>
-
-  <div class="feature">
-    Ninguém precisa formar grupo manualmente.
-  </div>
-
-</section>
-
-<section class="section">
-
-  <h2>VISUAL & FEEL</h2>
-
-  <div class="feature">
-    Gráficos simples por escolha.
-  </div>
-
-  <div class="feature">
-    Pixel art, partículas, efeitos rápidos.<br>
-    Tudo é legível durante o combate.
-  </div>
-
-  <div class="feature">
-    Estética CRT / retrô / brutal.
-  </div>
-
-</section>
-
-<section class="section">
-
-  <h2>WHY DIABLOCK EXISTS</h2>
-
-  <div class="feature">
-    Para quem sente falta de jogos diretos.
-  </div>
-
-  <div class="feature">
-    Para quem quer entrar e jogar,
-    sem menus infinitos.
-  </div>
-
-  <div class="feature">
-    Para quem gosta de dungeon, loot e perigo real.
-  </div>
-
-</section>
-
-<section class="hero" style="min-height:70vh">
-  <div class="logo" style="font-size:28px">READY?</div>
-  <a class="cta" href="https://diablock.onrender.com/">▶ ENTER THE DUNGEON</a>
-</section>
